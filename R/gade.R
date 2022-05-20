@@ -99,9 +99,9 @@ setMethod("print", "de", function(x, ...) str(x))
 
 setMethod("show", "de",
 function(object)
- { cat("An object of class \"de\"\n")
-   cat("\nCall:\n", deparse(object@call), "\n\n",sep="")
-   cat("Available slots:\n")
+ {message("An object of class \"de\"\n")
+  message("\nCall:\n", deparse(object@call), "\n\n",sep="")
+  message("Available slots:\n")
    print(slotNames(object))
 }) 
 
@@ -147,36 +147,36 @@ print.summary.de <- function(x, digits = getOption("digits"), ...)
   if(is.null(dotargs$chead)) dotargs$chead <- 10
   if(is.null(dotargs$ctail)) dotargs$ctail <- 2
   
-  cat(cli::rule(left = crayon::bold("Differential Evolution"), 
+ message(cli::rule(left = crayon::bold("Differential Evolution"), 
                 width = min(getOption("width"),40)), "\n\n")
-  cat("DE settings: \n")
-  cat(paste("Type                  = ", x$type, "\n"))
-  cat(paste("Population size       = ", x$popSize, "\n"))
-  cat(paste("Number of generations = ", x$maxiter, "\n"))
-  cat(paste("Elitism               = ", x$elitism, "\n"))
-  cat(paste("Stepsize              = ", format(x$stepsize, digits = digits), "\n"))
-  cat(paste("Crossover probability = ", format(x$pcrossover, digits = digits), "\n"))
-  cat(paste("Mutation probability  = ", format(x$pmutation, digits = digits), "\n"))
+ message("DE settings: \n")
+ message(paste("Type                  = ", x$type, "\n"))
+ message(paste("Population size       = ", x$popSize, "\n"))
+ message(paste("Number of generations = ", x$maxiter, "\n"))
+ message(paste("Elitism               = ", x$elitism, "\n"))
+ message(paste("Stepsize              = ", format(x$stepsize, digits = digits), "\n"))
+ message(paste("Crossover probability = ", format(x$pcrossover, digits = digits), "\n"))
+ message(paste("Mutation probability  = ", format(x$pmutation, digits = digits), "\n"))
   #
-  cat(paste("Search domain = \n"))
+ message(paste("Search domain = \n"))
   do.call(".printShortMatrix", 
           c(list(x$domain, digits = digits), 
             dotargs[c("head", "tail", "chead", "ctail")]))
   #
   if(!is.null(x$suggestions))
-    { cat(paste("Suggestions =", "\n"))
+    {message(paste("Suggestions =", "\n"))
       do.call(".printShortMatrix", 
               c(list(x$suggestions, digits = digits), 
                 dotargs[c("head", "tail", "chead", "ctail")]))
     }
   #
-  cat("\nDE results: \n")
-  cat(paste("Iterations             =", format(x$iter, digits = digits), "\n"))
-  cat(paste("Fitness function value =", format(x$fitness, digits = digits), "\n"))
+ message("\nDE results: \n")
+ message(paste("Iterations             =", format(x$iter, digits = digits), "\n"))
+ message(paste("Fitness function value =", format(x$fitness, digits = digits), "\n"))
   if(nrow(x$solution) > 1) 
-    { cat(paste("Solutions = \n")) }
+    {message(paste("Solutions = \n")) }
   else
-    { cat(paste("Solution = \n")) }
+    {message(paste("Solution = \n")) }
   do.call(".printShortMatrix", 
           c(list(x$solution, digits = digits), 
             dotargs[c("head", "tail", "chead", "ctail")]))

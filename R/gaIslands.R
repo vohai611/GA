@@ -322,9 +322,9 @@ setMethod("print", "gaisl", function(x, ...) str(x))
 
 setMethod("show", "gaisl",
 function(object)
- { cat("An object of class \"gaisl\"\n")
-   cat("\nCall:\n", deparse(object@call), "\n\n",sep="")
-   cat("Available slots:\n")
+ {message("An object of class \"gaisl\"\n")
+  message("\nCall:\n", deparse(object@call), "\n\n",sep="")
+  message("Available slots:\n")
    print(slotNames(object))
 }) 
 
@@ -369,35 +369,35 @@ print.summary.gaisl <- function(x, digits = getOption("digits"), ...)
   if(is.null(dotargs$chead)) dotargs$chead <- 10
   if(is.null(dotargs$ctail)) dotargs$ctail <- 2
   
-  cat(cli::rule(left = crayon::bold("Islands Genetic Algorithm"),
+ message(cli::rule(left = crayon::bold("Islands Genetic Algorithm"),
                 width = min(getOption("width"),40)), "\n\n")
-  # cat("+-----------------------------------+\n")
-  # cat("|         Genetic Algorithm         |\n")
-  # cat("|           Islands Model           |\n")
-  # cat("+-----------------------------------+\n\n")
+  #message("+-----------------------------------+\n")
+  #message("|         Genetic Algorithm         |\n")
+  #message("|           Islands Model           |\n")
+  #message("+-----------------------------------+\n\n")
   
-  cat("GA settings: \n")
-  cat(paste("Type                  = ", x$type, "\n"))
-  cat(paste("Number of islands     = ", x$numIslands, "\n"))
-  cat(paste("Islands pop. size     = ", x$popSizeIslands, "\n"))
-  cat(paste("Migration rate        = ", x$migrationRate, "\n"))
-  cat(paste("Migration interval    = ", x$migrationInterval, "\n"))
-  cat(paste("Elitism               = ", x$elitism, "\n"))
-  cat(paste("Crossover probability = ", format(x$pcrossover, digits = digits), "\n"))
-  cat(paste("Mutation probability  = ", format(x$pmutation, digits = digits), "\n"))
+ message("GA settings: \n")
+ message(paste("Type                  = ", x$type, "\n"))
+ message(paste("Number of islands     = ", x$numIslands, "\n"))
+ message(paste("Islands pop. size     = ", x$popSizeIslands, "\n"))
+ message(paste("Migration rate        = ", x$migrationRate, "\n"))
+ message(paste("Migration interval    = ", x$migrationInterval, "\n"))
+ message(paste("Elitism               = ", x$elitism, "\n"))
+ message(paste("Crossover probability = ", format(x$pcrossover, digits = digits), "\n"))
+ message(paste("Mutation probability  = ", format(x$pmutation, digits = digits), "\n"))
   if(x$type == "real-valued")
-    { cat(paste("Search domain = \n"))
+    {message(paste("Search domain = \n"))
       do.call(".printShortMatrix", 
               c(list(x$domain, digits = digits), 
                 dotargs[c("head", "tail", "chead", "ctail")]))
     }
 
-  cat("\nGA results: \n")
-  cat(paste("Iterations              =", format(x$iter, digits = digits), "\n"))
-  cat(paste("Epochs                  =", format(x$epoch, digits = digits), "\n"))
-  cat(paste("Fitness function values = "))
-  cat(format(x$fitnessValues, digits = digits), "\n")
-  cat(paste("Solutions = \n"))
+ message("\nGA results: \n")
+ message(paste("Iterations              =", format(x$iter, digits = digits), "\n"))
+ message(paste("Epochs                  =", format(x$epoch, digits = digits), "\n"))
+ message(paste("Fitness function values = "))
+ message(format(x$fitnessValues, digits = digits), "\n")
+ message(paste("Solutions = \n"))
   do.call(".printShortMatrix", 
           c(list(x$solution, digits = digits), 
             dotargs[c("head", "tail", "chead", "ctail")]))

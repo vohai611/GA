@@ -85,28 +85,28 @@ garun <- function(x)
 
 # clearConsoleLine <- function()
 # {
-#   cat(paste0(rep("\b", getOption("width")), collapse = ""))
+#  message(paste0(rep("\b", getOption("width")), collapse = ""))
 #   flush.console()
 # }
 
 clearConsoleLine <- function() 
 {
-  cat("\r")
-  cat(paste0(rep(" ", getOption("width")), collapse = ""))
-  cat("\r")
+ message("\r")
+ message(paste0(rep(" ", getOption("width")), collapse = ""))
+ message("\r")
   flush.console()
 }
 
 clearPrevConsoleLine <- function() 
 {
-  cat("\b");clearConsoleLine()
+ message("\b");clearConsoleLine()
 }
 
 clearConsoleLine <- function() 
 {
-  cat("\r")
-  cat(paste0(rep(" ", getOption("width")), collapse = ""))
-  cat("\r")
+ message("\r")
+ message(paste0(rep(" ", getOption("width")), collapse = ""))
+ message("\r")
   flush.console()
 }
 
@@ -120,8 +120,8 @@ clearConsoleLine <- function()
 #   sumryStat <- format(sumryStat, digits = digits)
 #   if(object@iter > 1) 
 #     replicate(2, clearPrevConsoleLine())
-#   cat(paste("GA | iter =", object@iter, "\n"))
-#   cat(paste("Mean =", sumryStat[1], "| Best =", sumryStat[2], "\n"))
+#  message(paste("GA | iter =", object@iter, "\n"))
+#  message(paste("Mean =", sumryStat[1], "| Best =", sumryStat[2], "\n"))
 #   flush.console()
 # }
 
@@ -131,10 +131,10 @@ gaMonitor <- function(object, digits = getOption("digits"), ...)
  fitness   <- na.exclude(object@fitness)
  sumryStat <- c(mean(fitness), max(fitness))
  sumryStat <- format(sumryStat, digits = digits)
- cat(paste("GA | iter =", object@iter, 
+message(paste("GA | iter =", object@iter, 
            "| Mean =", sumryStat[1], 
            "| Best =", sumryStat[2]))
- cat("\n")
+message("\n")
  flush.console()
 }
 
@@ -143,10 +143,10 @@ deMonitor <- function(object, digits = getOption("digits"), ...)
  fitness   <- na.exclude(object@fitness)
  sumryStat <- c(mean(fitness), max(fitness))
  sumryStat <- format(sumryStat, digits = digits)
- cat(paste("DE | iter =", object@iter, 
+message(paste("DE | iter =", object@iter, 
            "| Mean =", sumryStat[1], 
            "| Best =", sumryStat[2]))
- cat("\n")
+message("\n")
  flush.console()
 }
 
@@ -157,7 +157,7 @@ deMonitor <- function(object, digits = getOption("digits"), ...)
 #   sumryStat <- c(mean(fitness), max(fitness))
 #   sumryStat <- format(sumryStat, digits = digits)
 #   clearConsoleLine()
-#   cat(paste("GA | iter =", object@iter,
+#  message(paste("GA | iter =", object@iter,
 #             "| Mean =", sumryStat[1],
 #             "| Best =", sumryStat[2]))
 # }
@@ -172,9 +172,9 @@ deMonitor <- function(object, digits = getOption("digits"), ...)
 #   sumryStat <- format(sapply(sumryStat, function(x) x[nrow(x),2:1]),
 #                       digits = digits)
 #   replicate(object@numIslands+1, clearPrevConsoleLine()) 
-#   cat(paste("Islands GA | epoch =", epoch, "\n"))
+#  message(paste("Islands GA | epoch =", epoch, "\n"))
 #   for(i in 1:ncol(sumryStat))
-#     cat(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
+#    message(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
 #   flush.console()
 # }
 
@@ -188,9 +188,9 @@ gaislMonitor <- function(object, digits = getOption("digits"), ...)
   sumryStat <- format(sapply(sumryStat, function(x) x[nrow(x),2:1]),
                       digits = digits)
   # print info
-  cat(paste("Islands GA | epoch =", epoch, "\n"))
+ message(paste("Islands GA | epoch =", epoch, "\n"))
   for(i in 1:ncol(sumryStat))
-     cat(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
+    message(paste("Mean =", sumryStat[1,i], "| Best =", sumryStat[2,i], "\n"))
   flush.console()
 }
 
