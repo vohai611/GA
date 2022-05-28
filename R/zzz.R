@@ -3,7 +3,8 @@ GAStartupMessage <- function()
 # Startup message obtained as 
 # > figlet GA
   msg <- c(paste0(
-"  ____    _    
+"This is MODIFIED version of GA, which message the iteration instead of print, use with care
+  ____    _    
  / ___|  / \\     Genetic 
 | |  _  / _ \\    Algorithms
 | |_| |/ ___ \\   
