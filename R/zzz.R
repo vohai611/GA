@@ -19,7 +19,7 @@ GAStartupMessage <- function()
   unlockBinding(".ga.default", asNamespace("GA")) 
   # startup message
   msg <- GAStartupMessage()
-  if(!interactive())
+  if(interactive())
     msg[1] <- paste("Package 'GA' version", packageVersion("GA"))
   packageStartupMessage(msg)
   invisible()
