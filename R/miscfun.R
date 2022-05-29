@@ -131,11 +131,12 @@ gaMonitor <- function(object, digits = getOption("digits"), ...)
  fitness   <- na.exclude(object@fitness)
  sumryStat <- c(mean(fitness), max(fitness))
  sumryStat <- format(sumryStat, digits = digits)
-message(paste("GA | iter =", object@iter, 
-           "| Mean =", sumryStat[1], 
-           "| Best =", sumryStat[2]))
-message("\n")
- flush.console()
+ message(object@iter)
+#message(paste("GA | iter =", object@iter, 
+           # "| Mean =", sumryStat[1], 
+           # "| Best =", sumryStat[2]))
+#message("\n")
+ #flush.console()
 }
 
 deMonitor <- function(object, digits = getOption("digits"), ...)
